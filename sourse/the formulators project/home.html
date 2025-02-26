@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>themaniacstore</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link rel="stylesheet" href="style.css">
+    <script src="cart.js" ></script>
+
+</head>
+
+<body>
+
+    <section id="header">
+        <a href="#"><img src="images/logo.png" class="logo" alt=""></a>
+        <div>
+            <ul id="navbar">
+                <button class="logout" id="logout-btn" onclick="logout()">Logout</button>
+               
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+
+<script>
+    const firebaseConfig = {  
+        apiKey: "AIzaSyDN6cevaiLqi7IrafKNOSM9VWtABl7EHVY",
+        authDomain: "formulators-78a1f.firebaseapp.com",
+        projectId: "formulators-78a1f",
+        storageBucket: "formulators-78a1f.appspot.com", 
+        messagingSenderId: "447579075736",
+        appId: "1:447579075736:web:6c843690728cc68bf38ced",
+        measurementId: "G-JR5MF17Z58"
+    };
+
+    
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    function logout() {
+        auth.signOut().then(() => {
+            sessionStorage.setItem("loggedOut", "true"); 
+            localStorage.clear();
+            window.location.href = "index.html"; 
+        }).catch((error) => {
+            console.error("Logout Error:", error);
+        });
+    }
+</script>
+
+                <li><a class="active" href="home.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+
+
+                <li id="lg-bag"><a href="cart.html"><i class="far fa-shopping-bag"></i></a></li>
+                <li><a href="product.html">Sell Your Product</a></li>
+                <a href="#" id="close"><i class="far fa-times"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html"><i class="far fa-shopping-bag"></i></a>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div>
+    </section>
+
+    <section id="hero">
+        <h4></h4>
+        <h2>Exclusively</h2>
+        <h1>By Maniac Store</h1>
+        <p></p>
+        <button>Shop Now</button>
+    </section>
+
+    <section id="feature" class="section-p1">
+        <div class="fe-box">
+            <img src="images/features/f1.png" alt="">
+            <h6>Free Shipping</h6>
+        </div>
+        <div class="fe-box">
+            <img src="images/features/f2.png" alt="">
+            <h6>Online Order</h6>
+        </div>
+        <div class="fe-box">
+            <img src="images/features/f3.png" alt="">
+            <h6>Save Money</h6>
+        </div>
+        <div class="fe-box">
+            <img src="images/features/f4.png" alt="">
+            <h6>Promotions</h6>
+        </div>
+        <div class="fe-box">
+            <img src="images/features/f5.png" alt="">
+            <h6>Happy Sell</h6>
+        </div>
+        <div class="fe-box">
+            <img src="images/features/f6.png" alt="">
+            <h6>F24/7 Support</h6>
+        </div>
+    </section>
+
+    <section id="product1" class="section-p1">
+        <h2>Maniac Exclusives</h2>
+        <p>Summer Collection New Modern Design</p>
+        <div class="pro-container">
+            <div class="pro">
+                <img src="images/products/f1.jpg" alt="">
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cartoon Astronaut T-Shirts</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>599₹</h4>
+                </div>
+                <a href="#" class="add-to-cart" 
+   data-name="Cartoon Astronaut T-Shirt1" 
+   data-price="559" 
+   data-image="images/products/f1.jpg"> <i class="fas fa-shopping-cart cart"></i>
+</a>
+
+
+
+            </div>
+            <div class="pro">
+                <img src="images/products/f2.jpg" alt="">
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cartoon Astronaut T-Shirts</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>599₹</h4>
+                </div>
+                <a href="#" class="add-to-cart" 
+   data-name="Cartoon Astronaut T-Shirt2" 
+   data-price="559" 
+   data-image="images/products/f2.jpg"> <i class="fas fa-shopping-cart cart"></i>
+</a>
+            </div>
+            <div class="pro">
+                <img src="images/products/f3.jpg" alt="">
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cartoon Astronaut T-Shirts</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>599₹</h4>
+                </div>
+                <a href="#" class="add-to-cart" 
+                data-name="Cartoon Astronaut T-Shirt" 
+                data-price="559" 
+                data-image="images/products/f3.jpg"> <i class="fas fa-shopping-cart cart"></i>
+             </a>
+            </div>
+            <div class="pro">
+                <img src="images/products/f4.jpg" alt="">
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cartoon Astronaut T-Shirts</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>599₹</h4>
+                </div>
+                <a href="#" class="add-to-cart" 
+   data-name="Cartoon Astronaut T-Shirt" 
+   data-price="559" 
+   data-image="images/products/f4.jpg"> <i class="fas fa-shopping-cart cart"></i>
+</a>
+            </div>
+            <div class="pro">
+                <img src="images/products/f5.jpg" alt="">
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cartoon Astronaut T-Shirts</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>599₹</h4>
+                </div>
+                <a href="#" class="add-to-cart" 
+   data-name="Cartoon Astronaut T-Shirt" 
+   data-price="559" 
+   data-image="images/products/f5.jpg"> <i class="fas fa-shopping-cart cart"></i>
+</a>
+            </div>
+            <div class="pro">
+                <img src="images/products/f6.jpg" alt="">
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cartoon Astronaut T-Shirts</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>599₹</h4>
+                </div>
+                <a href="#" class="add-to-cart" 
+   data-name="Cartoon Astronaut T-Shirt" 
+   data-price="559" 
+   data-image="images/products/f6.jpg"> <i class="fas fa-shopping-cart cart"></i>
+</a>
+            </div>
+            <div class="pro">
+                <img src="images/products/f7.jpg" alt="">
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cartoon Astronaut T-Shirts</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>599₹</h4>
+                </div>
+                <a href="#" class="add-to-cart" 
+                data-name="Cartoon Astronaut T-Shirt" 
+                data-price="559" 
+                data-image="images/products/f7.jpg"> <i class="fas fa-shopping-cart cart"></i>
+             </a>
+            </div>
+            <div class="pro">
+                <img src="images/products/f8.jpg" alt="">
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cartoon Astronaut T-Shirts</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>599₹</h4>
+                </div>
+                <a href="#" class="add-to-cart" 
+   data-name="Cartoon Astronaut T-Shirt" 
+   data-price="559" 
+   data-image="images/products/f8.jpg"> <i class="fas fa-shopping-cart cart"></i>
+</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="banner" class="section-m1">
+        <h4>Maniac Services</h4>
+        <h2>Up to <span>70% Off</span> - All t-Shirts & Accessories</h2>
+        <button class="normal">Get Deeper Into Maniac</button>
+    </section>
+
+    <section id="product1" class="section-p1">
+        <h2>New Maniac Drops</h2>
+        <p>Summer Collection New Maniac Design</p>
+        <div class="pro-container">
+            <div class="pro">
+                <img src="images/products/n1.jpg" alt="">
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cartoon Astronaut T-Shirts</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>599₹</h4>
+                </div>
+                <a href="#" class="add-to-cart" 
+   data-name="Cartoon Astronaut T-Shirt" 
+   data-price="559" 
+   data-image="images/products/n1.jpg"> <i class="fas fa-shopping-cart cart"></i>
+</a>
+            </div>
+            <div class="pro">
+                <img src="images/products/n2.jpg" alt="">
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cartoon Astronaut T-Shirts</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>599₹</h4>
+                </div>
+                <a href="#" class="add-to-cart" 
+   data-name="Cartoon Astronaut T-Shirt" 
+   data-price="559" 
+   data-image="images/products/n2.jpg"> <i class="fas fa-shopping-cart cart"></i>
+</a>
+            </div>
+            <div class="pro">
+                <img src="images/products/n3.jpg" alt="">
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cartoon Astronaut T-Shirts</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>599₹</h4>
+                </div>
+                <a href="#" class="add-to-cart" 
+   data-name="Cartoon Astronaut T-Shirt" 
+   data-price="559" 
+   data-image="images/products/n3.jpg"> <i class="fas fa-shopping-cart cart"></i>
+</a>
+            </div>
+            <div class="pro">
+                <img src="images/products/n4.jpg" alt="">
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cartoon Astronaut T-Shirts</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>599₹</h4>
+                </div>
+                <a href="#" class="add-to-cart" 
+                data-name="Cartoon Astronaut T-Shirt" 
+                data-price="559" 
+                data-image="images/products/n4.jpg"> <i class="fas fa-shopping-cart cart"></i>
+             </a>
+            </div>
+            <div class="pro">
+                <img src="images/products/n5.jpg" alt="">
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cartoon Astronaut T-Shirts</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>599₹</h4>
+                </div>
+                <a href="#" class="add-to-cart" 
+   data-name="Cartoon Astronaut T-Shirt" 
+   data-price="559" 
+   data-image="images/products/n5.jpg"> <i class="fas fa-shopping-cart cart"></i>
+</a>
+            </div>
+            <div class="pro">
+                <img src="images/products/n6.jpg" alt="">
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cartoon Astronaut T-Shirts</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>599₹</h4>
+                </div>
+                <a href="#" class="add-to-cart" 
+   data-name="Cartoon Astronaut T-Shirt" 
+   data-price="559" 
+   data-image="images/products/n6.jpg"> <i class="fas fa-shopping-cart cart"></i>
+</a>
+            </div>
+            <div class="pro">
+                <img src="images/products/n7.jpg" alt="">
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cartoon Astronaut T-Shirts</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>599₹</h4>
+                </div>
+                <a href="#" class="add-to-cart" 
+                data-name="Cartoon Astronaut T-Shirt" 
+                data-price="559" 
+                data-image="images/products/n7.jpg"> <i class="fas fa-shopping-cart cart"></i>
+             </a>
+            </div>
+            <div class="pro">
+                <img src="images/products/n8.jpg" alt="">
+                <div class="des">
+                    <span>adidas</span>
+                    <h5>Cartoon Astronaut T-Shirts</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>599₹</h4>
+                </div>
+                <a href="#" class="add-to-cart" 
+   data-name="Cartoon Astronaut T-Shirt" 
+   data-price="559" 
+   data-image="images/products/n8.jpg"> <i class="fas fa-shopping-cart cart"></i>
+</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="sm-banner" class="section-p1">
+        <div class="banner-box">
+            <h4>Crazy Maniac Deals</h4>
+            <h2>Purchase With Affordable Deals</h2>
+            <span>The Most Premium Collections Available At Maniac</span>
+            <button class="white">Learn more</button>
+        </div>
+        <div class="banner-box">
+            <h4>Spring/Summer Maniacs</h4>
+            <h2>Maniac Upcoming</h2>
+            <span>The best classic dress is on sale at Maniac</span>
+            <button class="white">Collection</button>
+        </div>
+    </section>
+
+    <section id="banner3">
+        <div class="banner-box">
+            <h2>MANIAC SEASON</h2>
+            <h3>Winter Collection -50% OFF</h3>
+        </div>
+        <div class="banner-box">
+            <h2>MANIAC FOOTWEAR COLLECTION</h2>
+            <h3>Spring / Summer 2023</h3>
+        </div>
+        <div class="banner-box">
+            <h2>MANIAC LIMITED EDITION</h2>
+            <h3>New Trendy Prints</h3>
+        </div>
+    </section>
+
+    <section id="newsletter" class="section-p1 section-m1">
+        <div class="newstext">
+            <h4>Stay Updated</h4>
+            <p> <span></span></p>
+        </div>
+        <div class="form">
+            <input type="text" placeholder="Your email address">
+            <button class="normal">Subscribe</button>
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="col">
+            <img class="logo" src="images/logo.png" alt="">
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> KGISL INSTITUTE OF TECHNOLOGY , COIMBATORE-641035</p>
+            <p><strong>Phone:</strong> +91 1234567890</p>
+            <p><strong>Hours:</strong> 10:00 - 18:00, Mon - Sat</p>
+            <div class="follow">
+                <h4>Follow us</h4>
+                <div class="icon">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-pinterest-p"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign In</a>
+            <a href="#">View Cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="#">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="images/pay/app.jpg" alt="">
+                <img src="images/pay/play.jpg" alt="">
+            </div>
+            <p>Secured Payment Gateway</p>
+            <img src="images/pay/pay.png" alt="">
+        </div>
+        <div class="copyright">
+            <p>Created By The Formulators | All Rights Reserved | 2023</p>
+        </div>
+    </footer>
+
+    <!-- javascript script file link -->
+    <script src="script.js"></script>
+    
+</body>
+
+</html>

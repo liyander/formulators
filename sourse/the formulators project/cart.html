@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        .cart {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 100px;
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #222;
+        }
+
+        #cart-container, #payment-section {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            background: #f1f1f1;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        #cart-total {
+            font-size: 18px;
+            font-weight: bold;
+            color: #222;
+            margin-top: 15px;
+            padding: 10px;
+            background: #ffeb3b;
+            border-radius: 5px;
+        }
+
+        .proceed-btn, .pay-now {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .proceed-btn {
+            background: #28a745;
+            color: white;
+        }
+
+        .proceed-btn:hover {
+            background: #218838;
+        }
+
+        .pay-now {
+            background: #007bff;
+            color: white;
+        }
+
+        .pay-now:hover {
+            background: #0056b3;
+        }
+
+        #payment-section {
+            display: none;
+        }
+
+        #qr-code {
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <section id="header">
+        <a href="#"><img src="images/logo.png" class="logo" alt=""></a>
+        <div>
+            <ul id="navbar">
+                    <li><a class="active" href="home.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    
+                    
+                    <li id="lg-bag"><a href="cart.html"><i class="far fa-shopping-bag"></i></a></li>
+                    <li><a href="product.html">Sell Your Product</a></li>
+                    <a href="#" id="close"><i class="far fa-times"></i></a>
+                </ul>
+            </div>
+            <div id="mobile">
+                <a href="cart.html"><i class="far fa-shopping-bag"></i></a>
+                <i id="bar" class="fas fa-outdent"></i>
+            </div>
+        </section>
+    <div class="cart">
+
+        
+        <h1>Your Shopping Cart</h1>
+        <div id="cart-container">
+            <div id="cart-items"></div>
+            <p id="cart-total">Total: ₹0</p>
+            <a href="home.html" class="Continue">Continue Shopping</a>
+            <button class="proceed-btn" id="proceed-to-pay">Proceed to Pay</button>
+        </div>
+        
+        <div id="payment-section">
+            <h2>Scan & Pay via UPI</h2>
+            <div id="qr-code" style="padding-left: 150px;" ></div>
+            <p>Scan this QR code with your UPI app to complete the payment.</p>
+            <button class="pay-now" id="pay-now">Payment Done</button>
+        </div>
+        
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                
+                function updateCart() {
+                    localStorage.setItem("cart", JSON.stringify(cart));
+                    renderCart();
+                }
+                
+                function renderCart() {
+                    let cartContainer = document.getElementById("cart-items");
+                    let totalContainer = document.getElementById("cart-total");
+                    cartContainer.innerHTML = "";
+                    let total = 0;
+                    
+                    if (cart.length === 0) {
+                        cartContainer.innerHTML = "<p>Your cart is empty!</p>";
+                        totalContainer.innerText = "Total: ₹0";
+                        return;
+                    }
+                    
+                    cart.forEach((item, index) => {
+                        total += item.price * item.quantity;
+                        let itemElement = document.createElement("div");
+                        itemElement.classList.add("cart-item");
+                        itemElement.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}">
+                        <p>${item.name} - ₹${item.price} x ${item.quantity}</p>
+                        <button class="remove-btn" data-index="${index}">Remove</button>
+                        `;
+                        cartContainer.appendChild(itemElement);
+                    });
+                    
+                    totalContainer.innerText = `Total: ₹${total}`;
+                    document.querySelectorAll(".remove-btn").forEach(button => {
+                        button.addEventListener("click", function () {
+                            let index = this.getAttribute("data-index");
+                            cart.splice(index, 1);
+                            updateCart();
+                        });
+                    });
+                }
+                
+                document.getElementById("proceed-to-pay").addEventListener("click", function () {
+                    document.getElementById("payment-section").style.display = "block";
+                    generateQRCode("upi://pay?pa=yourupi@upi&pn=Your%20Store&am=" + document.getElementById("cart-total").innerText.replace("Total: ₹", ""));
+                });
+                
+                function generateQRCode(upiLink) {
+                    let qrContainer = document.getElementById("qr-code");
+                    qrContainer.innerHTML = "";
+                    new QRCode(qrContainer, {
+                        text: upiLink,
+                        width: 150,
+                        height: 150
+                    });
+                    qrContainer.style.display = "block";
+                }
+                
+                document.getElementById("pay-now").addEventListener("click", function () {
+                    alert("Payment confirmed! Thank you for your purchase.");
+                    localStorage.removeItem("cart");
+                    window.location.href = "home.html";
+                });
+                
+                renderCart();
+            });
+            </script>
+</div>
+</body>
+</html>
