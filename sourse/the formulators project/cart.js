@@ -8,20 +8,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function renderCart() {
-        // Clear all individual product cart displays first
+       
         document.querySelectorAll(".product-cart-item").forEach(el => el.remove());
         
-        // Create cart items and place them under their corresponding products
         cart.forEach((item, index) => {
-            // Find all product containers that match this item by image path
             document.querySelectorAll(".add-to-cart").forEach(button => {
                 const productImage = button.getAttribute("data-image");
                 
-                // Only create cart display for matching products by image
                 if (productImage === item.image) {
                     const productDiv = button.closest(".pro");
                     
-                    // Create cart item display
+
                     let cartItemDiv = document.createElement("div");
                     cartItemDiv.classList.add("product-cart-item");
                     cartItemDiv.style.padding = "8px";
@@ -41,13 +38,10 @@ document.addEventListener("DOMContentLoaded", function () {
                         </div>
                     `;
                     
-                    // Append cart item directly after the product details
                     productDiv.appendChild(cartItemDiv);
                 }
             });
         });
-
-        // Add event listeners for remove buttons
         document.querySelectorAll(".remove-btn").forEach(link => {
             link.addEventListener("click", function (event) {
                 event.preventDefault();
@@ -57,7 +51,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
 
-        // Also update the main cart display if it exists
         let mainCartContainer = document.getElementById("cart-items");
         if (mainCartContainer) {
             mainCartContainer.innerHTML = "";
@@ -87,18 +80,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function renderItemQuantities() {
-        // Remove any existing quantity displays
         document.querySelectorAll(".item-quantity").forEach(el => el.remove());
         
-        // Add quantity indicators for each product based on image
         document.querySelectorAll(".add-to-cart").forEach(button => {
             const imagePath = button.getAttribute("data-image");
             const existingItem = cart.find(item => item.image === imagePath);
             
-            // Get the parent product div
             const productDiv = button.closest(".pro");
             
-            // Create or update quantity indicator
             let quantityDiv = document.createElement("div");
             quantityDiv.className = "item-quantity";
             quantityDiv.style.textAlign = "center";
@@ -113,7 +102,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 quantityDiv.style.display = "none";
             }
             
-            // Append after the product details but before the cart item display
             const cartItemDisplay = productDiv.querySelector(".product-cart-item");
             if (cartItemDisplay) {
                 productDiv.insertBefore(quantityDiv, cartItemDisplay);
@@ -124,7 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function addToCart(name, price, image) {
-        // Use image as the unique identifier
         let existingItem = cart.find(item => item.image === image);
         if (existingItem) {
             existingItem.quantity += 1;
@@ -144,6 +131,5 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Initialize cart displays
     updateCart();
 });
